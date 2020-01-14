@@ -107,7 +107,7 @@ export async function lauchApplication (moduleName, url) {
       }));
     } catch (e) {
       parsedArgs = [
-        'Mensagem do console não pode ser obtida por conta do seguinte erro:',
+        'Console message could not be read due to the following error:',
         e,
       ];
     }
@@ -126,7 +126,7 @@ export async function sleep (ms) {
 }
 
 export async function takeScreenshot (page, moduleName) {
-  const screenshotPath = 'src/__tests__/e2e/screenshots/' + moduleName + '-' + (new Date()).getTime() + '.png';
+  const screenshotPath = 'screenshots/' + moduleName + '-' + (new Date()).getTime() + '.png';
   await page.screenshot({path: screenshotPath});
 }
 
