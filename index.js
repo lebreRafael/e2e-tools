@@ -1,10 +1,10 @@
 /* eslint-disable no-use-before-define */
 
-import path from 'path';
-import fs from 'fs';
-import puppeteer from 'puppeteer';
+const path = require('path');
+const fs = require('fs');
+const puppeteer = require('puppeteer');
 
-export async function getInputElementHandle (page, identificator, options, inputTag = 'input') {
+async function getInputElementHandle (page, identificator, options, inputTag = 'input') {
   const {tag} = identificator;
   const {elementHandle} = await getIdentificator(page, identificator);
   if (tag === 'label') {
@@ -15,18 +15,18 @@ export async function getInputElementHandle (page, identificator, options, input
   return elementHandle;
 }
 
-export async function clickElement (page, identificator) {
+async function clickElement (page, identificator) {
   const {elementHandle} = await getIdentificator(page, identificator);
   await elementHandle.click();
 }
 
-export async function doubleClickElement (page, identificator) {
+async function doubleClickElement (page, identificator) {
   const {elementHandle} = await getIdentificator(page, identificator);
   await elementHandle.click({clickCount: 1});
   await elementHandle.click({clickCount: 2});
 }
 
-export async function getElementHandleByXpath (page, elementPath, options = {}) {
+async function getElementHandleByXpath (page, elementPath, options = {}) {
   const {
     externalPath,
     index,
@@ -43,7 +43,7 @@ export async function getElementHandleByXpath (page, elementPath, options = {}) 
   return elements[0];
 }
 
-export async function getIdentificator (page, data) {
+async function getIdentificator (page, data) {
   const {
     isPlaceholder,
     options,
@@ -70,12 +70,12 @@ export async function getIdentificator (page, data) {
   return {elementHandle, xPath};
 }
 
-export function getModuleName (filePath) {
+function getModuleName (filePath) {
   const fileNameParts = filePath.split('/');
   return fileNameParts[fileNameParts.length - 1].replace('.test.js', '');
 }
 
-export async function lauchApplication (moduleName, url) {
+async function lauchApplication (moduleName, url) {
   const args = ['--single-process', '–no-sandbox', '–disable-setuid-sandbox', '--disable-features=Metal'];
   let launchOptions;
   if (process.env.NODE_TEST_ENV === 'debug') {
@@ -119,17 +119,30 @@ export async function lauchApplication (moduleName, url) {
   return [browser, page];
 }
 
-export async function sleep (ms) {
+async function sleep (ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
 }
 
-export async function takeScreenshot (page, moduleName) {
+async function takeScreenshot (page, moduleName) {
   const screenshotPath = 'screenshots/' + moduleName + '-' + (new Date()).getTime() + '.png';
   await page.screenshot({path: screenshotPath});
 }
 
-export async function waitElement (page, identificator) {
+async function waitElement (page, identificator) {
   await getIdentificator(page, identificator);
 }
+
+module.exports = {
+  getInputElementHandle,
+  clickElement,
+  doubleClickElement,
+  getElementHandleByXpath,
+  getIdentificator,
+  getModuleName,
+  lauchApplication,
+  sleep,
+  takeScreenshot,
+  waitElement,
+};
