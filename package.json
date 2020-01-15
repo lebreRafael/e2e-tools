@@ -1,6 +1,6 @@
 {
   "name": "puppeteer-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A set of functions to let you write e2e tests more quickly and with interactions more user like",
   "main": "index.js",
   "scripts": {
