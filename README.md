@@ -11,3 +11,8 @@ const page = await browser.newPage();
 
 const puppeteerTools = createPuppeteerTools(page);
 ```
+
+# Coming soon
+* More input types (check, radio, textarea, ...)
+* Custom input types
+* Function to check form data
