@@ -16,3 +16,6 @@ const puppeteerTools = createPuppeteerTools(page);
 * More input types (check, radio, textarea, ...)
 * Custom input types
 * Function to check form data
+
+# Contributing
+Not organized yet, so for now reach me on twitter [@lebreRafael](https://twitter.com/lebreRafael)
