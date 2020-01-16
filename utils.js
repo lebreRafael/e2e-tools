@@ -5,7 +5,7 @@ class Utils {
 
   async getInputElementHandle (identificator, options, inputTag = 'input') {
     const {tag} = identificator;
-    const {elementHandle} = await this.getIdentificator(this.page, identificator);
+    const {elementHandle} = await this.getIdentificator(identificator);
     if (tag === 'label') {
       const inputId = await this.page.evaluate((labelElement) => labelElement.getAttribute('for'), elementHandle);
       const inputXPath = '//' + inputTag + '[@id = "' + inputId + '"]';
