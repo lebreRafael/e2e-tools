@@ -1,6 +1,9 @@
+const Utils = require('./utils');
+
 class InputGeneric {
   constructor (page) {
     this.page = page;
+    this.utils = new Utils(page);
   }
 
   // async check (identificator, expectedValue, options) {
@@ -9,7 +12,7 @@ class InputGeneric {
   // }
 
   async fill (identificator, data, options) {
-    const elementHandle = await getInputElementHandle(identificator, options); // FIXME
+    const elementHandle = await this.utils.getInputElementHandle(identificator, options);
     await elementHandle.click();
     const inputValue = await this.getValue(null, {elementHandle});
     if (inputValue) {
@@ -35,7 +38,7 @@ class InputGeneric {
   }
 
   async getValue (identificator, options) {
-    const elementHandle = (options && options.elementHandle) || await getInputElementHandle(identificator, options);
+    const elementHandle = (options && options.elementHandle) || await this.utils.getInputElementHandle(identificator, options);
     const valueHandle = await elementHandle.getProperty('value');
     return valueHandle.jsonValue();
   }
