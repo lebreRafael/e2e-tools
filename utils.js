@@ -3,17 +3,6 @@ class Utils {
     this.page = page;
   }
 
-  async getInputElementHandle (identificator, options, inputTag = 'input') {
-    const {tag} = identificator;
-    const {elementHandle} = await this.getIdentificator(identificator);
-    if (tag === 'label') {
-      const inputId = await this.page.evaluate((labelElement) => labelElement.getAttribute('for'), elementHandle);
-      const inputXPath = '//' + inputTag + '[@id = "' + inputId + '"]';
-      return this.getElementHandleByXpath(inputXPath, options);
-    }
-    return elementHandle;
-  }
-
   async clickElement (identificator) {
     const {elementHandle} = await this.getIdentificator(identificator);
     await elementHandle.click();
@@ -44,24 +33,47 @@ class Utils {
 
   async getIdentificator (data) {
     const {
-      isPlaceholder,
+      label,
       options,
+      placeholder,
       siblingTag,
       tag,
       text,
     } = data;
 
-    let siblingXPath = '';
-    if (siblingTag) siblingXPath = '//following-sibling::' + siblingTag;
+    let {xPath} = data;
 
-    let {xPath} = options || {};
-    if (!xPath) {
-      if (isPlaceholder) {
-        xPath = '//input[@placeholder = "' + text + '"]' + siblingXPath;
-      } else {
-        xPath = '//' + tag + '[text() = "' + text + '"]' + siblingXPath;
+    if (xPath && tag) throw new Error('Identificator can not have both "xPath" and "tag" keys');
+    if (!xPath && !tag) throw new Error('Identificator must have one of the following keys: "xPath" or "tag"');
+
+    if (xPath) {
+      const elementHandle = await this.getElementHandleByXpath(xPath, options);
+      return {elementHandle, xPath};
+    }
+
+    xPath = '//' + tag;
+
+    if (tag === 'input') {
+      if (text) throw new Error('Identificator can not have "text" key when "tag" key is "input"');
+
+      if (label) {
+        const {elementHandle: labelElement} = await this.getIdentificator({tag: 'label', text: label});
+        const inputId = await this.page.evaluate((element) => element.getAttribute('for'), labelElement);
+        xPath += '[@id = "' + inputId + '"]';
+      }
+      if (placeholder) {
+        xPath += '[@placeholder = "' + placeholder + '"]';
       }
     }
+
+    if (text) {
+      xPath += '[text() = "' + text + '"]';
+    }
+
+    if (siblingTag) {
+      xPath += '//following-sibling::' + siblingTag;
+    }
+
     const elementHandle = await this.getElementHandleByXpath(xPath, options);
     return {elementHandle, xPath};
   }
