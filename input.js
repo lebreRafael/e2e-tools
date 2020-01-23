@@ -52,7 +52,7 @@ class Input {
       // case 'textarea':
       //   return fillTextarea(identificator, data, options);
       default:
-        throw new Error('Tipo inválido: ' + type);
+        throw new Error('Invalid type: ' + type);
     }
   }
 }
