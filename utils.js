@@ -50,13 +50,10 @@ class Utils {
       tag,
       text,
     } = data;
-    let siblingXPath;
-    if (siblingTag) {
-      siblingXPath = '//following-sibling::' + siblingTag;
-    } else {
-      // Essas tags nunca tem filhos
-      siblingXPath = ['h1', 'h2', 'h3', 'h4', 'legend'].includes(tag) ? '//following-sibling::div' : '';
-    }
+
+    let siblingXPath = '';
+    if (siblingTag) siblingXPath = '//following-sibling::' + siblingTag;
+
     let {xPath} = options || {};
     if (!xPath) {
       if (isPlaceholder) {
