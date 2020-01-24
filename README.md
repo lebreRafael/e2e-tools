@@ -26,12 +26,12 @@ await puppeteerTools.form.fill([
   {
     data: 'mylogin'
     label: 'Login',
-    tag: 'input',
+    type: 'text',
   },
   {
     data: 'mypass'
     label: 'Password',
-    tag: 'input',
+    type: 'text',
   },
 ]);
 await Promise.all([
