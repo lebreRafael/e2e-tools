@@ -10,6 +10,24 @@ const browser = await puppeteer.launch();
 const page = await browser.newPage();
 
 const puppeteerTools = createPuppeteerTools(page);
+
+await page.goto('http://myapp.com/login');
+await puppeteerTools.form.fill([
+  {
+    data: 'mylogin'
+    label: 'Login',
+    tag: 'input',
+  },
+  {
+    data: 'mypass'
+    label: 'Password',
+    tag: 'input',
+  },
+]);
+await Promise.all([
+  page.waitForNavigation(),
+  page.click('button[type=submit]'),
+]);
 ```
 
 # Coming soon
