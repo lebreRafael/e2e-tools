@@ -1,6 +1,17 @@
 # puppeteer-tools
 A set of functions to let you write e2e tests more quickly and with interactions more user like
 
+# Installation
+```
+npm i puppeteer-tools
+```
+
+puppeteer-tools is like a plugin to puppeteer, so you need to install it too.
+```
+npm i puppeteer
+```
+
+
 # Getting Started
 ```
 import puppeteer from 'puppeteer';
