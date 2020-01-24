@@ -1,5 +1,4 @@
-# puppeteer-tools
-A set of functions to let you write e2e tests more quickly and with interactions more user like
+### [API documentation](https://github.com/lebreRafael/puppeteer-tools/blob/master/api.md)
 
 # Installation
 ```
