@@ -44,7 +44,8 @@ await Promise.all([
 # Coming soon
 * More input types (check, radio, textarea, ...)
 * Custom input types
-* Function to check form data
+* Function to check form data (input.check() and form.check())
+* Function to get input value (input.getValue())
 
 # Contributing
 Not organized yet, so for now reach me on twitter [@lebreRafael](https://twitter.com/lebreRafael)
