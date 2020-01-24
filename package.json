@@ -21,7 +21,5 @@
     "url": "https://github.com/lebreRafael/puppeteer-tools/issues"
   },
   "homepage": "https://github.com/lebreRafael/puppeteer-tools#readme",
-  "dependencies": {
-    "puppeteer": "^2.0.0"
-  }
+  "dependencies": {}
 }
