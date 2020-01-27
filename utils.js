@@ -3,13 +3,13 @@ class Utils {
     this.page = page;
   }
 
-  async clickElement (identificator) {
-    const {elementHandle} = await this.getIdentificator(identificator);
+  async click (identificator) {
+    const {elementHandle} = await this.getElement(identificator);
     await elementHandle.click();
   }
 
-  async doubleClickElement (identificator) {
-    const {elementHandle} = await this.getIdentificator(identificator);
+  async doubleClick (identificator) {
+    const {elementHandle} = await this.getElement(identificator);
     await elementHandle.click({clickCount: 1});
     await elementHandle.click({clickCount: 2});
   }
@@ -36,7 +36,7 @@ class Utils {
     return elements[0];
   }
 
-  async getIdentificator (data) {
+  async getElement (identificator) {
     const {
       label,
       options,
@@ -44,9 +44,9 @@ class Utils {
       siblingTag,
       tag,
       text,
-    } = data;
+    } = identificator;
 
-    let {xPath} = data;
+    let {xPath} = identificator;
 
     if (xPath && tag) throw new Error('Identificator can not have both "xPath" and "tag" keys');
     if (!xPath && !tag) throw new Error('Identificator must have one of the following keys: "xPath" or "tag"');
@@ -62,7 +62,7 @@ class Utils {
       if (text) throw new Error('Identificator can not have "text" key when "tag" key is "input"');
 
       if (label) {
-        const {elementHandle: labelElement} = await this.getIdentificator({tag: 'label', text: label});
+        const {elementHandle: labelElement} = await this.getElement({tag: 'label', text: label});
         const inputId = await this.page.evaluate((element) => element.getAttribute('for'), labelElement);
         xPath += '[@id = "' + inputId + '"]';
       }
@@ -83,8 +83,8 @@ class Utils {
     return {elementHandle, xPath};
   }
 
-  async waitElement (identificator) {
-    await this.getIdentificator(identificator);
+  async waitForElement (identificator) {
+    await this.getElement(identificator);
   }
 }
 

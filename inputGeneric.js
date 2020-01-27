@@ -14,7 +14,7 @@ class InputGeneric {
   // TODO: create function composeIdentificator to be called into input.fill
 
   async fill (identificator, data, options) {
-    const {elementHandle} = await this.utils.getIdentificator({...identificator, tag: 'input'}, options);
+    const {elementHandle} = await this.utils.getElement({...identificator, tag: 'input'}, options);
     await elementHandle.click();
     const inputValue = await this.getValue(identificator, options);
     if (inputValue) {
@@ -40,7 +40,7 @@ class InputGeneric {
   }
 
   async getValue (identificator, options) {
-    const {elementHandle} = await this.utils.getIdentificator({...identificator, tag: 'input'}, options);
+    const {elementHandle} = await this.utils.getElement({...identificator, tag: 'input'}, options);
     const valueHandle = await elementHandle.getProperty('value');
     return valueHandle.jsonValue();
   }
