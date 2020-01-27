@@ -14,6 +14,11 @@ class Utils {
     await elementHandle.click({clickCount: 2});
   }
 
+  extractIdentificatorObject (inputData) {
+    const {label, placeholder, tag} = inputData;
+    return {label, placeholder, tag};
+  }
+
   async getElementHandleByXpath (elementPath, options = {}) {
     const {
       externalPath,

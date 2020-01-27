@@ -1,9 +1,11 @@
 const InputGeneric = require('./inputGeneric');
+const Utils = require('./utils');
 
 class Input {
   constructor (page) {
     this.page = page;
     this.inputGeneric = new InputGeneric(page);
+    this.utils = new Utils(page);
   }
 
   // async checkInput (inputData) {
@@ -37,10 +39,10 @@ class Input {
     const {
       beforeFill, // function
       data,
-      identificator,
       options,
       type,
     } = inputData;
+    const identificator = this.utils.extractIdentificatorObject(inputData);
     if (beforeFill) await beforeFill(this.page);
     switch (type) {
       // case 'checkBox':

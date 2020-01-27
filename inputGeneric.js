@@ -7,14 +7,16 @@ class InputGeneric {
   }
 
   // async check (identificator, expectedValue, options) {
-  //   const inputValue = await this.getValue(identificator, options);
+  //   const inputValue = await this.getValue({...identificator, tag: 'input'}, options);
   //   expect(inputValue).toBe(expectedValue);
   // }
 
+  // TODO: create function composeIdentificator to be called into input.fill
+
   async fill (identificator, data, options) {
-    const elementHandle = await this.utils.getInputElementHandle(identificator, options);
+    const {elementHandle} = await this.utils.getIdentificator({...identificator, tag: 'input'}, options);
     await elementHandle.click();
-    const inputValue = await this.getValue(null, {elementHandle});
+    const inputValue = await this.getValue(identificator, options);
     if (inputValue) {
       /* eslint-disable no-await-in-loop */
       for (let i = 0; i < inputValue.length; i++) {
@@ -38,7 +40,7 @@ class InputGeneric {
   }
 
   async getValue (identificator, options) {
-    const elementHandle = (options && options.elementHandle) || await this.utils.getInputElementHandle(identificator, options);
+    const {elementHandle} = await this.utils.getIdentificator({...identificator, tag: 'input'}, options);
     const valueHandle = await elementHandle.getProperty('value');
     return valueHandle.jsonValue();
   }
