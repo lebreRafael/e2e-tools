@@ -1,7 +1,7 @@
 - [class: Form](#class-form)
   * [form.fill([inputs])](#formfill)
 - [class: Input](#class-input)
-  * [input.fill([inputs])](#inputfill)
+  * [input.fill(input)](#inputfill)
 - [class: Utils](#class-utils)
   * [utils.click(identificator)](#click)
   * [utils.doubleClick(identificator)](#doubleclick)
