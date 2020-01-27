@@ -3,4 +3,7 @@
 - [class: Input](#class-input)
   * [input.fill([inputs])](#inputfill)
 - [class: Utils](#class-utils)
-  * Waiting for code refactor before documenting
+  * [utils.click(identificator)](#click)
+  * [utils.doubleClick(identificator)](#doubleclick)
+  * [utils.getElement(identificator)](#getelement)
+  * [utils.waitForElement(identificator)](#utilswaitforelement)
