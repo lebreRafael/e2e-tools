@@ -24,12 +24,12 @@ const puppeteerTools = createPuppeteerTools(page);
 await page.goto('http://myapp.com/login');
 await puppeteerTools.form.fill([
   {
-    data: 'mylogin'
+    data: 'mylogin',
     label: 'Login',
     type: 'text',
   },
   {
-    data: 'mypass'
+    data: 'mypass',
     label: 'Password',
     type: 'text',
   },
