@@ -1,5 +1,10 @@
 ### [API documentation](https://github.com/lebreRafael/puppeteer-tools/blob/master/api.md)
 
+# Why use puppeteer-tools
+* You want to have your e2e tests less coupled to your code and acting more like a real user
+* You don't have a QA team and you want to have some e2e tests to make sure that main user flow will
+not break, so you need to write it as fast and easily as you can.
+
 # Installation
 ```
 npm i puppeteer-tools
@@ -9,7 +14,6 @@ puppeteer-tools is like a plugin to puppeteer, so you need to install it too.
 ```
 npm i puppeteer
 ```
-
 
 # Getting Started
 ```
