@@ -45,6 +45,7 @@ await Promise.all([
 * Custom input types
 * Function to check form data (input.check() and form.check())
 * Function to get input value (input.getValue())
+* Possibility to execute some action between inputs fill in form.fill
 
 # Contributing
 Not organized yet, so for now reach me on twitter [@lebreRafael](https://twitter.com/lebreRafael)
