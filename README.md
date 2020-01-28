@@ -48,4 +48,4 @@ await Promise.all([
 * Possibility to execute some action between inputs fill in form.fill
 
 # Contributing
-Not organized yet, so for now reach me on twitter [@lebreRafael](https://twitter.com/lebreRafael)
+Not organized yet, so for now reach me on twitter [@lebreRafael](https://twitter.com/lebreRafael) or just open issues and PRs
