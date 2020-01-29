@@ -1,4 +1,4 @@
-- [function: createPuppeteerTools](#function-createpuppeteertools)
+- [function: createPuppeteerTools](#function-createpuppeteertoolspage-checkcb)
 - [class: Form](#class-form)
   * [form.check([inputs])](#formcheckinputs)
   * [form.fill([inputs])](#formfillinputs)
