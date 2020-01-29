@@ -1,15 +1,16 @@
 const Utils = require('./utils');
 
 class InputGeneric {
-  constructor (page) {
+  constructor (page, checkCB) {
+    this.checkCB = checkCB;
     this.page = page;
     this.utils = new Utils(page);
   }
 
-  // async check (identificator, expectedValue, options) {
-  //   const inputValue = await this.getValue({...identificator, tag: 'input'}, options);
-  //   expect(inputValue).toBe(expectedValue);
-  // }
+  async check (identificator, expectedValue, options) {
+    const inputValue = await this.getValue(identificator, options);
+    this.checkCB(inputValue, expectedValue);
+  }
 
   // TODO: create function composeIdentificator to be called into input.fill
 

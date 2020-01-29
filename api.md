@@ -1,6 +1,8 @@
 - [class: Form](#class-form)
+  * [form.check([inputs])](#formcheckinputs)
   * [form.fill([inputs])](#formfillinputs)
 - [class: Input](#class-input)
+  * [input.check(input)](#inputcheckinput)
   * [input.fill(input)](#inputfillinput)
   * [input.getValue(input)](#inputgetvalueinput)
 - [class: Utils](#class-utils)
@@ -13,7 +15,16 @@
 Provides methods to handle multiple inputs
 
 #### form.fill([inputs])
-* `inputs` <[array]<[object]>> An array of objects that describes the input in a human way (using screen things like label instead of id and test-id)
+* `inputs` <[array]<[object]>> An array of objects that describes the input and the data to be filled
+  * `data` <[string]> The value you want to fill in your input
+  * `label` <[string]> The input's label
+  * `placeholder` <[string]> The input's placeholder
+  * `type` <[string]> For now, the only type supported is **text**
+
+#### form.check([inputs])
+* `inputs` <[array]<[object]>> An array of objects that describes the input and the data to be checked
+  * `checkData` <[string]> This one overrides the data key in check function. This is usefull
+  when using the same inputData in fill and check function and the value is formatted.
   * `data` <[string]> The value you want to fill in your input
   * `label` <[string]> The input's label
   * `placeholder` <[string]> The input's placeholder
@@ -22,8 +33,10 @@ Provides methods to handle multiple inputs
 ### class: Input
 Provides methods to handle inputs
 
-#### input.fill(input)
-* `input` <[object]> An object that describes the input and the data to be filled
+#### input.check(input)
+* `input` <[object]> An object that describes the input and the data to be checked
+  * `checkData` <[string]> This one overrides the data key in check function. This is usefull
+  when using the same inputData in fill and check function and the value is formatted.
   * `data` <[string]> The value you want to fill in your input
   * `label` <[string]> The input's label
   * `placeholder` <[string]> The input's placeholder
@@ -31,6 +44,13 @@ Provides methods to handle inputs
 
 This method get the input matching label, placeholder and type, scrolls it into view if needed,
 click into it and fill in your data.
+
+#### input.fill(input)
+* `input` <[object]> An object that describes the input and the data to be filled
+  * `data` <[string]> The value you want to fill in your input
+  * `label` <[string]> The input's label
+  * `placeholder` <[string]> The input's placeholder
+  * `type` <[string]> For now, the only type supported is **text**
 
 #### input.getValue(input)
 * `input` <[object]> An object that describes the input
