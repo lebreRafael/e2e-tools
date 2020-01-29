@@ -59,6 +59,23 @@ class Input {
         throw new Error('Invalid type: ' + type);
     }
   }
+
+  async getValue (inputData) {
+    const {options, type} = inputData;
+    const identificator = this.utils.extractIdentificatorObject(inputData);
+    switch (type) {
+      // case 'checkBox':
+      //   return fillCheckBox(identificator, data);
+      // case 'radio':
+      //   return selectRadioGroupItem(identificator, data);
+      case 'text':
+        return this.inputGeneric.getValue(identificator, options);
+      // case 'textarea':
+      //   return fillTextarea(identificator, data, options);
+      default:
+        throw new Error('Invalid type: ' + type);
+    }
+  }
 }
 
 module.exports = Input;
