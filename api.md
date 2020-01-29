@@ -1,3 +1,4 @@
+- [function: createPuppeteerTools](#function-createpuppeteertools)
 - [class: Form](#class-form)
   * [form.check([inputs])](#formcheckinputs)
   * [form.fill([inputs])](#formfillinputs)
@@ -10,6 +11,14 @@
   * [utils.doubleClick(identificator)](#utilsdoubleclickidentificator)
   * [utils.getElement(identificator)](#utilsgetelementidentificator)
   * [utils.waitForElement(identificator)](#utilswaitforelementidentificator)
+
+### function: createPuppeteerTools(page, [checkCB])
+* `page` <[object]> The page object returned from `await browser.newPage();` in puppeteer
+* `checkCB` <[function]> A function that is called to check input values in form.check() and input.check(). You must
+get the params passed to this function and pass it to you test suit's expect functions. Your test must fail if they
+are not equal.
+  * `value` Current input's value
+  * `expectedValue` Expected value for this input.
 
 ### class: Form
 Provides methods to handle multiple inputs
