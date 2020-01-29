@@ -14,17 +14,17 @@
 ### class: Form
 Provides methods to handle multiple inputs
 
-#### form.fill([inputs])
-* `inputs` <[array]<[object]>> An array of objects that describes the input and the data to be filled
+#### form.check([inputs])
+* `inputs` <[array]<[object]>> An array of objects that describes the input and the data to be checked
+  * `checkData` <[string]> This one overrides the data key in check function. This is usefull
+  when using the same inputData in fill and check function and the value is formatted.
   * `data` <[string]> The value you want to fill in your input
   * `label` <[string]> The input's label
   * `placeholder` <[string]> The input's placeholder
   * `type` <[string]> For now, the only type supported is **text**
 
-#### form.check([inputs])
-* `inputs` <[array]<[object]>> An array of objects that describes the input and the data to be checked
-  * `checkData` <[string]> This one overrides the data key in check function. This is usefull
-  when using the same inputData in fill and check function and the value is formatted.
+#### form.fill([inputs])
+* `inputs` <[array]<[object]>> An array of objects that describes the input and the data to be filled
   * `data` <[string]> The value you want to fill in your input
   * `label` <[string]> The input's label
   * `placeholder` <[string]> The input's placeholder
