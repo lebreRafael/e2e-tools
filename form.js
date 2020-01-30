@@ -1,8 +1,11 @@
 const Input = require('./input');
+const Utils = require('./utils');
 
 class Form {
   constructor (page, checkCB) {
     this.input = new Input(page, checkCB);
+    this.page = page;
+    this.utils = new Utils(page);
   }
 
   /**
@@ -35,6 +38,22 @@ class Form {
       await this.input.fill(data);
       /* eslint-enable no-await-in-loop */
     }
+  }
+
+  async submit (options = {}) {
+    const {waitForNavigation = true, identificator = null} = options;
+    const clickFunction = async () => {
+      if (identificator) {
+        await this.utils.click(identificator);
+      } else {
+        await this.page.waitForSelector('button[type=submit]');
+        await this.page.click('button[type=submit]');
+      }
+    };
+    await Promise.all([
+      waitForNavigation ? this.page.waitForNavigation() : null,
+      clickFunction(),
+    ]);
   }
 }
 

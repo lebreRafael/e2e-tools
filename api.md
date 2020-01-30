@@ -2,6 +2,7 @@
 - [class: Form](#class-form)
   * [form.check([inputs])](#formcheckinputs)
   * [form.fill([inputs])](#formfillinputs)
+  * [form.submit([options])](#formsubmitoptions)
 - [class: Input](#class-input)
   * [input.check(input)](#inputcheckinput)
   * [input.fill(input)](#inputfillinput)
@@ -38,6 +39,15 @@ Provides methods to handle multiple inputs
   * `label` <[string]> The input's label
   * `placeholder` <[string]> The input's placeholder
   * `type` <[string]> For now, the only type supported is **text**
+
+#### form.submit([options])
+* `options` <[object]>
+  * `waitForNavigation` <[boolean]> wait for navigation after submit the form. Defaults to `true`
+  * `identificator` <[object]> An object that describes the element in a human way (using screen things like label instead of id and test-id)
+    * `label` <[string]> The element's label
+    * `placeholder` <[string]> The element's placeholder
+    * `tag` <[string]> The element's tag name
+    * `text` <[string]> The element's text
 
 ### class: Input
 Provides methods to handle inputs
