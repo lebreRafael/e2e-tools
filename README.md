@@ -1,4 +1,5 @@
-### [API documentation](https://github.com/lebreRafael/puppeteer-tools/blob/master/api.md)
+# Docs
+#### [API reference](https://github.com/lebreRafael/puppeteer-tools/blob/master/api.md)
 
 # Why use puppeteer-tools
 * You want to have your e2e tests less coupled to your code and acting more like a real user
