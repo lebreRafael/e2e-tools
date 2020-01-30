@@ -20,6 +20,10 @@ get the params passed to this function and pass it to you test suit's expect fun
 are not equal.
   * `value` Current input's value
   * `expectedValue` Expected value for this input.
+* returns: <[object]>
+  * `Form` <[object]>
+  * `Input` <[object]>
+  * `Utils` <[object]>
 
 ### class: Form
 Provides methods to handle multiple inputs
@@ -32,6 +36,7 @@ Provides methods to handle multiple inputs
   * `label` <[string]> The input's label
   * `placeholder` <[string]> The input's placeholder
   * `type` <[string]> For now, the only type supported is **text**
+* returns: <[Promise]>
 
 #### form.fill([inputs])
 * `inputs` <[array]<[object]>> An array of objects that describes the input and the data to be filled
@@ -39,6 +44,7 @@ Provides methods to handle multiple inputs
   * `label` <[string]> The input's label
   * `placeholder` <[string]> The input's placeholder
   * `type` <[string]> For now, the only type supported is **text**
+* returns: <[Promise]>
 
 #### form.submit([options])
 * `options` <[object]>
@@ -48,6 +54,7 @@ Provides methods to handle multiple inputs
     * `placeholder` <[string]> The element's placeholder
     * `tag` <[string]> The element's tag name
     * `text` <[string]> The element's text
+* returns: <[Promise]>
 
 ### class: Input
 Provides methods to handle inputs
@@ -60,6 +67,7 @@ Provides methods to handle inputs
   * `label` <[string]> The input's label
   * `placeholder` <[string]> The input's placeholder
   * `type` <[string]> For now, the only type supported is **text**
+* returns: <[Promise]>
 
 This method get the input matching label, placeholder and type, scrolls it into view if needed,
 click into it and fill in your data.
@@ -70,13 +78,14 @@ click into it and fill in your data.
   * `label` <[string]> The input's label
   * `placeholder` <[string]> The input's placeholder
   * `type` <[string]> For now, the only type supported is **text**
+* returns: <[Promise]>
 
 #### input.getValue(input)
 * `input` <[object]> An object that describes the input
   * `label` <[string]> The input's label
   * `placeholder` <[string]> The input's placeholder
   * `type` <[string]> For now, the only type supported is **text**
-* returns: <[string]>
+* returns: <[Promise]<[string]>>
 
 This method get the input matching label, placeholder and type, scrolls it into view if needed,
 click into it, get it's value and return it.
@@ -89,6 +98,7 @@ click into it, get it's value and return it.
   * `placeholder` <[string]> The element's placeholder
   * `tag` <[string]> The element's tag name
   * `text` <[string]> The element's text
+* returns: <[Promise]>
 
 #### utils.doubleClick(identificator)
 * `identificator` <[object]> An object that describes the element in a human way (using screen things like label instead of id and test-id)
@@ -96,6 +106,7 @@ click into it, get it's value and return it.
   * `placeholder` <[string]> The element's placeholder
   * `tag` <[string]> The element's tag name
   * `text` <[string]> The element's text
+* returns: <[Promise]>
 
 #### utils.getElement(identificator)
 * `identificator` <[object]> An object that describes the element in a human way (using screen things like label instead of id and test-id)
@@ -103,6 +114,7 @@ click into it, get it's value and return it.
   * `placeholder` <[string]> The element's placeholder
   * `tag` <[string]> The element's tag name
   * `text` <[string]> The element's text
+* returns: <[Promise]<[ElementHandle]>>
 
 #### utils.waitForElement(identificator)
 * `identificator` <[object]> An object that describes the element in a human way (using screen things like label instead of id and test-id)
@@ -110,4 +122,5 @@ click into it, get it's value and return it.
   * `placeholder` <[string]> The element's placeholder
   * `tag` <[string]> The element's tag name
   * `text` <[string]> The element's text
+* returns: <[Promise]>
 
