@@ -48,7 +48,6 @@ await Promise.all([
 # Coming soon
 * More input types (check, radio, textarea, ...)
 * Custom input types
-* Function to get input value (input.getValue())
 * Possibility to execute some action between inputs fill in form.fill
 
 # Contributing
